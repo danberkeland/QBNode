@@ -1,0 +1,25 @@
+var QuickBooks = require("node-quickbooks");
+
+let consumerKey = "ABMoSkUwyZik7OSSRVyzobfowXSFXmZSwubuebPtgJjDIDKOjB";
+let consumerSecret = "kIc5Fh5wIO0D5GZ6dJUWFaIcegw0UCqGXk5LIPpJ";
+let oauthToken = "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0..qVkq2c8gXNciXTY6p7RtCQ.JmMy4EEa4Dwgl4xq5xJ31tsYSInCpdxG9rgOrfFqwdxBbDpizL73RJJbS4RNImb5xkS00faZp-3MatVFLCgszaKpq4WwSjiWG_7ZyAatKsHx9K6hzZ_iva4d6_OqewIf1V0vNDuW66-QTx2gLOTYubsfKbC0CwrjW56IXXTkfZ6ogWwZe_sDItlnyFmZrhpmYQ2_LydpgCMKswb2uyblyjZT0dSVntlYOBwlqA0BjZCHnD_lqa_f26b0PfYusYxmrqSCBtDtBgyb5RtJADE9zpGo4X0mMeR9ttQAgmosXvrfaiB1jTgUL4W766YxMBee11y6fJN1ett_mS8jQefQuT_iqGr-9VQ-86UpPVUFCNsspj18D24qvCcnseO5LzSEtcVmZoWbdsN-mthn9hEkld4UE-S_h__dzUfcdWW3LWAMKDY71tvRl24dLWZajosmeqZzOVa1Rk-mPtj514qX8Ek_TxjM8HnUvhA1sMN-h4U0rkizDVzhT4kKUjOMNbcjMSj41VzMTUcvh_KsCQ082xwY5-PPrzGBALVIjI7748QNkeaf-Rwykch20fpEWYNiv9OUzjhybqWZIJP-dIDdqRNa8Zip1oUOCVZTCEUhkNyXABbpjA2tWNblVsfBvDZDeI_R1zPqDcvLCUQ6TC1zwscBDnTZmfCZHsvBXxxHmjBEly9zwtbjXtdIK1danmCxZrOD4wbvHkPtgPYSZrF8wxS-jJbUrjE32S0-kat3Ct8.d1Fyvixntwfn3zoyjoW55g..Vr3IF6FJGVEza5sgIFdPoQ.IZDBDhOnjaI-3Wf9P5islO9pZyQuG-ia8ZBylSIvrIN0XWEdzTyC9e-6s0pLDGQPBj2DjhapIJXoovTP_mVo1Xvj-Sii1SBi3md4TtvG6K7MT7xrcrCqTYLvkJ00X1ZpwJ8jS_KLmaHmVOjWxltH45xfdfyK7L3XuUmNq_ESFh8X3561lI5WQFnT9jZ0YmDA2GHOwz8th9hV5d-csgMamMwOWec4uJus8xgnqSPckNMFrctOgvssIddt9lkhR9j9WkQQlZEXp5Tu3Bk1uGwDwmT3bUpbaQ7pvJglk3FaDckXghxkEE57mpma53tUDDT-RjldBgeM2PEOO7D4WzeNiYVqftRlVt22LN_OZKJ43UHeN9TqFGQoTvVTSoPDjtlqr2JGv8c0rQ3UVX8tBYUeroIo3m7x0o_-qijEMgqQj9qapF837z3zv6_N-0JsI3arvPhQ_aeCI0Jp96fGmHdaSrAY9wnV5C8N3W5u1NaGL1UkKRs-pZFyPu2iN7LztLRSoQMj5D7AbmnDFuM8dv-JrU9FDrpWV1irRdwhDa4yuyzEa2mNzJ6DD1dZHRLODDRj065gqHHRHVIUBkjR5e-DH8bWoWdJKpAl972dl1tSzhTbkr64ZyWaQfHs0Ki5kh83Dn82mXJOZ1OWQ6YX25IFN7wau8mkv9S_I7skUXLJctEHuYw80P03_0ZNMaSDOFxGxHC8SUlcsoRmColrJulkbJ7MN2hRv64Gqs4XgQir8PQ.ZMQ_T3y6fRSOTH-R-G79tw"
+ 
+let realmId = "480063645";
+let refreshToken = "AB11643392165NeGTcyDRJKb9AtfMe6kXHYW21ksdzKsZnFmeX";
+
+var qbo = new QuickBooks(
+  consumerKey,
+  consumerSecret,
+  oauthToken,
+  false, // no token secret for oAuth 2.0
+  realmId,
+  false, // use the sandbox?
+  true, // enable debugging?
+  null, // set minorversion, or null for the latest version
+  "2.0", //oAuth version
+  refreshToken
+);
+
+qbo.getInvoice("145803", function (err, getInvoice) {
+  console.log(getInvoice);
+});
